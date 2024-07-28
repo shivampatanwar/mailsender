@@ -5,6 +5,21 @@
 <title>Insert title here</title>
 
 <style type="text/css">
+
+@media only screen and (max-width:975px) {
+
+	#div {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: column;
+		gap: 50px;
+		padding: 50px;
+	}
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -17,6 +32,7 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
+	flex-wrap: wrap;
 }
 
 .form {
@@ -63,13 +79,15 @@ textarea {
 h1 {
 	font-size: 17px;
 }
+
+
 </style>
 
 </head>
 <body>
 
 
-	<div class="div">
+	<div class="div" id="div">
 		<div>
 			<form class="form" action="mail" method="post">
 				<label>To : </label> <input type="email" name="email"> <label>Subject
@@ -86,7 +104,7 @@ h1 {
 
 		<div class="form">
 
-			<form  action="otp" method="post">
+			<form action="otp" method="post">
 				<label>To : </label> <input type="email" name="email"> <label>Subject
 					: </label> <input type="text" name="subject">
 				<button>Send OTP</button>
@@ -102,15 +120,14 @@ h1 {
 				<h1 style="color: green" th:text="${match}"></h1>
 			</form>
 		</div>
-		
-		
-		
+
+
+
 		<div class="form">
 
-			<form  action="mobile" method="post">
-				<label>Mobile Number : </label> 
-				<input type="tel" name="mobile">
-				
+			<form action="mobile" method="post">
+				<label>Mobile Number : </label> <input type="tel" name="mobile">
+
 				<button>Send OTP</button>
 				<h1 style="color: green" th:text="${res}"></h1>
 			</form>
@@ -128,6 +145,6 @@ h1 {
 
 
 	</div>
-	
+
 </body>
 </html>
