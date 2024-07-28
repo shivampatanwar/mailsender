@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.div {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+.form {
+	width: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	flex-direction: column;
+	box-shadow: 0 0 5px black;
+	padding: 50px;
+	border-radius: 5px;
+}
+
+input {
+	margin: 5px auto 10px;
+	width: 100%;
+	height: 35px;
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+button {
+	padding: 8px 15px;
+	background-color: teal;
+	color: white;
+	border: none;
+	margin: 15px 0px;
+	border-radius: 5px;
+}
+
+h3 {
+	width: 100%;
+	padding: 0;
+}
+
+textarea {
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: 5px;
+	width: 100%;
+}
+
+h1 {
+	font-size: 17px;
+}
+</style>
+
+</head>
+<body>
+
+
+	<div class="div">
+		<div>
+			<form class="form" action="mail" method="post">
+				<label>To : </label> <input type="email" name="email"> <label>Subject
+					: </label> <input type="text" name="subject"> <label>Message
+					: </label>
+				<textarea name="message" cols="21" rows="5"></textarea>
+				<button>Send</button>
+				<h1 style="color: green" th:text="${success}"></h1>
+				<h1 style="color: red" th:text="${failure}"></h1>
+			</form>
+		</div>
+
+
+
+		<div class="form">
+
+			<form  action="otp" method="post">
+				<label>To : </label> <input type="email" name="email"> <label>Subject
+					: </label> <input type="text" name="subject">
+				<button>Send OTP</button>
+				<h1 style="color: green" th:text="${success1}"></h1>
+				<h1 style="color: red" th:text="${failure1}"></h1>
+			</form>
+
+			<br>
+			<form action="match" th:if="${otp}" method="post">
+				<input type="hidden" name="mailotp" th:value="${otp}"> <input
+					type="number" name="otp" placeholder="Enter OTP">
+				<button>Submit</button>
+				<h1 style="color: green" th:text="${match}"></h1>
+			</form>
+		</div>
+		
+		
+		
+		<div class="form">
+
+			<form  action="mobile" method="post">
+				<label>Mobile Number : </label> 
+				<input type="tel" name="mobile">
+				
+				<button>Send OTP</button>
+				<h1 style="color: green" th:text="${res}"></h1>
+			</form>
+
+			<br>
+			<form action="motp" th:if="${motp}" method="post">
+				<input type="hidden" name="mailotp" th:value="${motp}"> <input
+					type="number" name="otp" placeholder="Enter OTP">
+				<button>Submit</button>
+				<h1 style="color: green" th:text="${match}"></h1>
+			</form>
+		</div>
+
+
+
+
+	</div>
+	
+</body>
+</html>
